@@ -13,12 +13,11 @@
         @endif
         <div class="form-group">
             <label for="username">Username</label>
-            <input name="email" type="email" id="email" class="form-control " value="admin@example.dev"
-                id="username" placeholder="Enter username" autocomplete="email" autofocus>
+            <input name="email" type="email" id="email" class="form-control " value="admin@example.dev" id="username" placeholder="Enter username" autocomplete="email" autofocus>
         </div>
         <div class="form-group">
             <label for="userpassword">Password</label>
-            <input type="password" name="password" id="pass" class="form-control  " id="userpassword" value="admin@123456" placeholder="Enter password">
+            <input type="password" name="password" id="pass" class="form-control" id="userpassword" value="admin@123456" placeholder="Enter password">
         </div>
         <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="remember" id="customControlInline">

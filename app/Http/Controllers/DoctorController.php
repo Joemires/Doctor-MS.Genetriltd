@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewUserCompleteRegistration;
 use App\Models\{User};
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Propaganistas\LaravelPhone\PhoneNumber;
 use Illuminate\Support\Str;
 
@@ -58,23 +60,15 @@ class DoctorController extends Controller
             'mobile.phone' => "Please input a correct mobile number",
         ]);
 
-        $user = User::create([
+        $user = (new User)->fill([
             'name' => $request->first_name . ' ' . $request->last_name,
             'email' => $request->email,
             'contacts' => [
                 'mobile' => [
                     'working_line' => PhoneNumber::make($request->mobile, $request->mobile_country)
                 ]
-            ],
-            'password' => Hash::make('password-change-required')
+            ]
         ]);
-
-        $user->assignRole('doctor');
-
-        if($request->has('profile_photo')) {
-            // Upload User Avatar
-            $user->addMediaFromRequest('profile_photo')->toMediaCollection('avatar');
-        }
 
         $doctor_meta = [
             'availability' => [
@@ -90,6 +84,15 @@ class DoctorController extends Controller
 
         $user->meta = $doctor_meta;
         $user->save();
+
+        if($request->has('profile_photo')) {
+            // Upload User Avatar
+            $user->addMediaFromRequest('profile_photo')->toMediaCollection('avatar');
+        }
+
+        $user->assignRole('doctor');
+
+        Mail::to($user)->queue(new NewUserCompleteRegistration($user));
 
         return redirect()->route('backend.doctors.index')->withSuccess('A new doctor has been enrolled in the system successfully');
     }

@@ -33,8 +33,19 @@
             <div class="card">
                 <div class="card-body">
                     <blockquote>Basic Information</blockquote>
-                    <form id="addtime" action=" {{ route('backend.doctors.store') }}" method="post" enctype="multipart/form-data">
+                    <form id="addtime" action="{{ route('backend.doctors.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <img class="m-0"
+                                    src="https://doctorly.themesbrand.website/assets/images/users/noImage.png"
+                                    onclick="triggerClick()" data-toggle="tooltip" data-placement="top"
+                                    title="Click to Upload Profile Photo" id="profile_display">
+                                <input type="file" class="form-control " tabindex="8" name="profile_photo"
+                                    id="profile_photo" style="display:none;" onchange="displayProfile(this)">
+                                {{-- <label class="control-label">Profile Photo </label> --}}
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="row">
@@ -80,93 +91,6 @@
                                                 <strong>{{ $errors->first('experience') }}</strong>
                                             </span>
                                         @endif
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12 form-group">
-                                        <label class="control-label d-block">Doctor available days <span class="text-danger">*</span></label>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1" name="available_days[sun]">
-                                            <label class="form-check-label" for="inlineCheckbox1">Sun</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="1" name="available_days[mon]">
-                                            <label class="form-check-label" for="inlineCheckbox2">Mon</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="1" name="available_days[tue]">
-                                            <label class="form-check-label" for="inlineCheckbox3">Tue</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="1" name="available_days[wed]">
-                                            <label class="form-check-label" for="inlineCheckbox4">Wed</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="1" name="available_days[thu]">
-                                            <label class="form-check-label" for="inlineCheckbox5">Thu</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="1" name="available_days[fri]">
-                                            <label class="form-check-label" for="inlineCheckbox6">Fri</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="1" name="available_days[sat]">
-                                            <label class="form-check-label" for="inlineCheckbox7">Sat</label>
-                                        </div>
-
-                                        @if($errors->has('available_days'))
-                                            <span class="invalid-feedback d-block" role="alert">
-                                                <strong>{{ $errors->first('available_days') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 form-group">
-                                        <label class="control-label">Slot Duration (In Minute) <span class="text-danger">*</span></label>
-                                        <select class="form-control select2 @error('slot_duration') is-invalid @enderror" name="slot_duration" id="slot_duration">
-                                            <option value="" disabled selected>00</option>
-                                            @foreach (range(1, 60) as $i)
-                                                <option>{{ $i }}</option>
-                                            @endforeach
-                                        </select>
-                                        @if($errors->has('slot_duration'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('slot_duration') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class='repeater mb-4'>
-                                            <div data-repeater-list="time_slot" class="form-group">
-
-                                                <label>Available Time <span class="text-danger">*</span></label>
-                                                <div data-repeater-item class="mb-3 row">
-                                                    <div class="col-md-5 col-6">
-                                                        <label class="label-control">From:</label>
-                                                        <div class="input-group">
-                                                            <input type="time" name="from" class="form-control timecount timepicker " placeholder="From time" id="time_from" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-5 col-6">
-                                                        <label class="label-control">To:</label>
-                                                        <div class="input-group">
-                                                            <input type="time" name="to" class="form-control  " placeholder="To time" onchange="valinput0()" id="time_to" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-2 col-4 d-flex align-items-end">
-                                                        <button data-repeater-delete type="button" onclick="cf--" class="fcbtn btn btn-outline btn-danger btn-1d btn-sm inner form-control d-flex align-items-center px-3" style="width: max-content">
-                                                            <i class="bx bx-x fs-14"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p class="para error d-none"></p>
-                                            <input data-repeater-create type="button" class="btn btn-primary" value="Add Time" onclick="change()" />
-
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -218,14 +142,100 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12 form-group">
-                                        <label class="control-label">Profile Photo <span class="text-danger">*</span></label>
-                                        <img class="" src=" https://doctorly.themesbrand.website/assets/images/users/noImage.png " id="profile_display" onclick="triggerClick()" data-toggle="tooltip" data-placement="top" title="Click to Upload Profile Photo">
-                                        <input type="file" class="form-control " tabindex="8" name="profile_photo" id="profile_photo" style="display:none;" onchange="displayProfile(this)">
+                            </div>
+                        </div>
+
+                        <blockquote class="mt-2">Availability Information</blockquote>
+
+                        <div class="row">
+                            {{-- <div class="col-lg-12"> --}}
+                                <div class="col-md-6">
+                                    <div class='repeater mb-4'>
+                                        <div data-repeater-list="time_slot" class="form-group">
+
+                                            <label>Available Time <span class="text-danger">*</span></label>
+                                            <div data-repeater-item class="mb-3 row">
+                                                <div class="col-md-5 col-6">
+                                                    <label class="label-control small">From:</label>
+                                                    <div class="input-group">
+                                                        <input type="time" name="from" class="form-control timecount timepicker " placeholder="From time" id="time_from" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 col-6">
+                                                    <label class="label-control small">To:</label>
+                                                    <div class="input-group">
+                                                        <input type="time" name="to" class="form-control  " placeholder="To time" onchange="valinput0()" id="time_to" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-4 d-flex align-items-end">
+                                                    <button data-repeater-delete type="button" onclick="cf--" class="fcbtn btn btn-outline btn-danger btn-1d btn-sm inner form-control d-flex align-items-center px-3" style="width: max-content">
+                                                        <i class="bx bx-x fs-14"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="para error d-none"></p>
+                                        <input data-repeater-create type="button" class="btn btn-primary" value="Add Time" onclick="change()" />
+
                                     </div>
                                 </div>
-                            </div>
+
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-12 form-group">
+                                            <label class="control-label d-block">Doctor available days <span class="text-danger">*</span></label>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1" name="available_days[sun]">
+                                                <label class="form-check-label" for="inlineCheckbox1">Sun</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="1" name="available_days[mon]">
+                                                <label class="form-check-label" for="inlineCheckbox2">Mon</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="1" name="available_days[tue]">
+                                                <label class="form-check-label" for="inlineCheckbox3">Tue</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="1" name="available_days[wed]">
+                                                <label class="form-check-label" for="inlineCheckbox4">Wed</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="1" name="available_days[thu]">
+                                                <label class="form-check-label" for="inlineCheckbox5">Thu</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="1" name="available_days[fri]">
+                                                <label class="form-check-label" for="inlineCheckbox6">Fri</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="1" name="available_days[sat]">
+                                                <label class="form-check-label" for="inlineCheckbox7">Sat</label>
+                                            </div>
+
+                                            @if($errors->has('available_days'))
+                                                <span class="invalid-feedback d-block" role="alert">
+                                                    <strong>{{ $errors->first('available_days') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                        <div class="col-md-12 form-group">
+                                            <label class="control-label">Slot Duration (In Minute) <span class="text-danger">*</span></label>
+                                            <select class="form-control select2 @error('slot_duration') is-invalid @enderror" name="slot_duration" id="slot_duration">
+                                                <option value="" disabled selected>00</option>
+                                                @foreach (range(1, 60) as $i)
+                                                    <option>{{ $i }}</option>
+                                                @endforeach
+                                            </select>
+                                            @if($errors->has('slot_duration'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('slot_duration') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            {{-- </div> --}}
                         </div>
                         <div class="row">
                             <div class="col-md-12">

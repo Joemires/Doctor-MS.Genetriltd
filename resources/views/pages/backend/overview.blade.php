@@ -1,3 +1,8 @@
+@php
+    $role = optional(auth()->user()->roles->first())->name ?: 'patient';
+    // dd(auth()->user()->roles->first());
+    // dd($role);
+@endphp
 <x-app-layout>
     <!-- start page title -->
     <div class="row">
@@ -25,7 +30,7 @@
                             </div>
                         </div>
                         <div class="col-5 align-self-end">
-                            <img src="assets/images/profile-img.png"
+                            <img src="{{ asset('assets/images/profile-img.png') }}"
                                 alt="" class="img-fluid">
                         </div>
                     </div>
@@ -40,6 +45,7 @@
                             <h5 class="font-size-15 text-truncate"> {{ auth()->user()->name}} </h5>
                             <p class="text-muted mb-0 text-truncate">Super Admin</p>
                         </div>
+                        @role('admin')
                         <div class="col-sm-8">
                             <div class="pt-4">
                                 <div class="row">
@@ -66,6 +72,30 @@
                                 </div>
                             </div>
                         </div>
+
+                        @elserole('doctor')
+                        <div class="col-sm-8">
+                            <div class="pt-4">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5 class="font-size-12">Last Login:</h5>
+                                        <p class="text-muted mb-0"> 2022-05-20 21:13:22 </p>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-12">
+                                        <a href="https://doctorly.themesbrand.website/profile" class="btn btn-primary waves-effect waves-light btn-sm">Edit Profile
+                                            <i class="mdi mdi-arrow-right ml-1"></i></a>
+                                        <a href="https://doctorly.themesbrand.website/time-edit/2" class="btn btn-primary waves-effect waves-light btn-sm">Edit Time Slot
+                                            <i class="mdi mdi-arrow-right ml-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @else
+                        User
+                        @endrole
                     </div>
                 </div>
             </div>

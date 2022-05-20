@@ -141,9 +141,9 @@
                             <a class="dropdown-item text-danger" href="javascript:void();"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i>
                                 Logout </a>
-                            <form id="logout-form" action="logout" method="POST"
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                 style="display: none;">
-                                <input type="hidden" name="_token" value="2j83XjzhSY8CAjI39g28dErSqDkDiIUiX3xYYcfk">
+                                @csrf
                             </form>
                         </div>
                     </div>
@@ -165,6 +165,10 @@
                                     <i class="bx bx-home-circle mr-2"></i>Dashboard
                                 </a>
                             </li>
+
+                            @role('admin')
+                            {{-- Admin Section --}}
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-layout"
                                     role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -176,6 +180,7 @@
                                     <a href="{{ route('backend.doctors.create') }}" class="dropdown-item">Add New Doctor</a>
                                 </div>
                             </li>
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-layout"
                                     role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -186,6 +191,7 @@
                                     <a href="{{ route('backend.patients.create') }}" class="dropdown-item">Add New Patient</a>
                                 </div>
                             </li>
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-layout"
                                     role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -197,6 +203,49 @@
                                     <a href="receptionist/create" class="dropdown-item">Add New Receptionist</a>
                                 </div>
                             </li>
+
+                            @elserole('doctor')
+                            {{-- Doctor Section` --}}
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://doctorly.themesbrand.website/appointment/create">
+                                        <i class="bx bx-calendar-plus mr-2"></i>Appointment
+                                    </a>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-layout"
+                                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="bx bx-user-circle mr-2"></i>Patients <span class="arrow-down"></span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="topnav-layout">
+                                        <a href="{{ route('backend.patients.index') }}" class="dropdown-item">List of Patients</a>
+                                        <a href="{{ route('backend.patients.create') }}" class="dropdown-item">Add New Patient</a>
+                                    </div>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="https://doctorly.themesbrand.website/receptionist">
+                                        <i class="bx bx-user-circle mr-2"></i>Receptionist
+                                    </a>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-layout" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="bx bx-notepad mr-2"></i>Prescription<div class="arrow-down"></div>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="topnav-layout">
+                                        <a href="https://doctorly.themesbrand.website/prescription" class="dropdown-item">List of Prescriptions</a>
+                                        <a href="https://doctorly.themesbrand.website/prescription/create" class="dropdown-item">Create Prescription</a>
+                                    </div>
+                                </li>
+
+                            @else
+                            {{-- Patient Section --}}
+
+                            @endrole
+
+
                             <li class="nav-item">
                                 <a class="nav-link"
                                     href="pending-appointment">

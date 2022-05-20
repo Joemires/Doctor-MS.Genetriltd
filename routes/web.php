@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{DoctorController, PatientController};
+use App\Http\Controllers\{OverviewController, DoctorController, PatientController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,11 +24,7 @@ Route::get('/dashboard', function () {
 
 
 Route::prefix('backend')->as('backend.')->group(function () {
-    Route::get('overview', function () {
-        $users =\App\Models\User::with('roles')->get()->groupBy( fn($user) => $user->getRoleNames()->first() ?? 'patient' );
-        // dd($users->toArray());
-        return view('pages.backend.overview', compact('users'));
-    })->name('overview');
+    Route::get('overview', [OverviewController::class, 'index'])->name('overview');
 
     Route::resource('doctors', DoctorController::class);
     Route::resource('patients', PatientController::class);

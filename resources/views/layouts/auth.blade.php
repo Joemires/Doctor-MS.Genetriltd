@@ -9,16 +9,16 @@
     <meta content="Doctorly" name="author">
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
     <!-- App css -->
-    <link href="assets/css/bootstrap-dark.min.css" id="bootstrap-dark" rel="stylesheet" type="text/css">
-    <link href="assets/css/bootstrap.min.css" id="bootstrap-light" rel="stylesheet" type="text/css">
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/app-rtl.min.css" id="app-rtl" rel="stylesheet" type="text/css">
-    <link href="assets/css/app-dark.min.css" id="app-dark" rel="stylesheet" type="text/css">
-    <link href="assets/css/app.min.css" id="app-light" rel="stylesheet" type="text/css">
-    <link href="assets/libs/toastr/toastr.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/bootstrap-dark.min.css') }}" id="bootstrap-dark" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" id="bootstrap-light" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/app-rtl.min.css') }}" id="app-rtl" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/app-dark.min.css') }}" id="app-dark" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/app.min.css') }}" id="app-light" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/libs/toastr/toastr.min.css') }}" rel="stylesheet" type="text/css">
 
     @stack('styles')
 </head>
@@ -51,7 +51,7 @@
                                     </div>
                                 </div>
                                 <div class="col-5 align-self-end">
-                                    <img src="assets/images/profile-img.png" alt=""
+                                    <img src="{{ asset('assets/images/profile-img.png') }}" alt=""
                                         class="img-fluid">
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
                                 <a href="https://doctorly.themesbrand.website">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
-                                            <img src="assets/images/logo.png"
+                                            <img src="{{ asset('assets/images/logo.png') }}"
                                                 alt="" class="rounded-circle" height="34">
                                         </span>
                                     </div>
@@ -92,14 +92,14 @@
     <!-- JAVASCRIPT -->
     {{-- <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script> --}}
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="assets/libs/bootstrap/bootstrap.min.js"></script>
-    <script src="assets/libs/metismenu/metismenu.min.js"></script>
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/libs/node-waves/node-waves.min.js"></script>
-    <script src="assets/libs/toastr/toastr.min.js"></script>
+    <script src="{{ asset('assets/libs/bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/metismenu/metismenu.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/node-waves/node-waves.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/toastr/toastr.min.js') }}"></script>
 
     <!-- App js -->
-    <script src="assets/js/app.min.js"></script>
+    <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
     @stack('scripts')
 
