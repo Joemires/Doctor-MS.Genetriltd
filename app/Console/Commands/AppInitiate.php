@@ -50,13 +50,17 @@ class AppInitiate extends Command
         Role::create(['name' => 'receptionist']);
         Role::create(['name' => 'pharmacy']);
 
-        $admin = User::create([
+        User::create([
             'name' => 'Admin Dev',
             'email' => 'admin@example.dev',
             'password' => Hash::make('admin@123456')
-        ]);
+        ])->assignRole('admin');
 
-        $admin->assignRole('admin');
+        User::create([
+            'name' => 'Doctor Dev',
+            'email' => 'doctor@example.dev',
+            'password' => Hash::make('doctor@123456')
+        ])->assignRole('doctor');
 
     }
 }

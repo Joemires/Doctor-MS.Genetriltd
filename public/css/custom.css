@@ -1,0 +1,15 @@
+/*!
+You can add your custom css here
+*/
+
+@media (max-width: 991px) {
+    .dc-navigation>ul>li>.sub-menu {
+        display: none;
+    }
+}
+
+.dc-breadcrumbarea {
+    float: left;
+    width: 100%;
+    padding: 20px 0 0;
+}
