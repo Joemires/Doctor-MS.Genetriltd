@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appoinntment;
 use Illuminate\Http\Request;
 
-class AppoinntmentController extends Controller
+class AppointmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class AppoinntmentController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.backend.appointment.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class AppoinntmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.backend.appointment.create');
     }
 
     /**

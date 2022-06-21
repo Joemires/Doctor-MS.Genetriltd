@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{OverviewController, DoctorController, PatientController};
+use App\Http\Controllers\{AccountController, DoctorController, PatientController, AppointmentController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,15 +19,21 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('pages.backend.overview');
-})->middleware(['auth'])->name('dashboard');
+        return view('pages.backend.overview');
+    })
+    ->middleware(['auth'])
+    ->name('dashboard');
 
 
 Route::prefix('backend')->as('backend.')->group(function () {
-    Route::get('overview', [OverviewController::class, 'index'])->name('overview');
+    Route::get('overview', [AccountController::class, 'overview'])->name('overview');
+    Route::get('profile/{tab?}', [AccountController::class, 'profile'])->name('profile');
+
+    Route::get('profile/{user}/{tab?}', [AccountController::class, 'profile'])->name('user.profile');
 
     Route::resource('doctors', DoctorController::class);
     Route::resource('patients', PatientController::class);
+    Route::resource('appointments', AppointmentController::class);
 });
 
 require __DIR__.'/auth.php';

@@ -66,7 +66,16 @@ class PatientController extends Controller
                 'mobile' => [
                     'working_line' => PhoneNumber::make($request->mobile, $request->mobile_country)
                 ]
-            ]
+            ],
+            'addresses' => collect()->add([
+                'label' => 'Default Address',
+                'street' => $request->address,
+                'country_code' => $request->mobile_country,
+                'post_code'  => null,
+                'is_primary' => true,
+                'is_billing' => true,
+                'is_shipping' => true,
+            ])
         ]);
 
         // return (new NewUserCompleteRegistration($user))->render();
@@ -94,22 +103,9 @@ class PatientController extends Controller
             $user->addMediaFromRequest('profile_photo')->toMediaCollection('avatar');
         }
 
-        // Create a new address
-        $user->addresses()->create([
-            'label' => 'Default Address',
-            'given_name' => $request->first_name,
-            'family_name' => $request->last_name,
-            'country_code' => $request->mobile_country,
-            'street' => $request->address,
-            'is_primary' => true,
-            'is_billing' => true,
-            'is_shipping' => true,
-        ]);
-
-
         Mail::to($user)->queue(new NewUserCompleteRegistration($user));
 
-        return redirect()->route('backend.patients.index')->withSuccess('A new doctor has been enrolled in the system successfully');
+        return redirect()->route('backend.patients.index')->withSuccess('A new patient has been enrolled in the system successfully');
     }
 
     /**

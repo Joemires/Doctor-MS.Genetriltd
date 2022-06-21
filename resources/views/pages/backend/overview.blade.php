@@ -84,9 +84,9 @@
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col-12">
-                                        <a href="https://doctorly.themesbrand.website/profile" class="btn btn-primary waves-effect waves-light btn-sm">Edit Profile
+                                        <a href="{{ route('backend.profile', 'edit') }}" class="btn btn-primary waves-effect waves-light btn-sm">Edit Profile
                                             <i class="mdi mdi-arrow-right ml-1"></i></a>
-                                        <a href="https://doctorly.themesbrand.website/time-edit/2" class="btn btn-primary waves-effect waves-light btn-sm">Edit Time Slot
+                                        <a href="{{ route('backend.profile', 'slots') }}" class="btn btn-primary waves-effect waves-light btn-sm">Edit Time Slot
                                             <i class="mdi mdi-arrow-right ml-1"></i></a>
                                     </div>
                                 </div>

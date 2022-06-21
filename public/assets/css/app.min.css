@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap);
 @charset "UTF-8";
+
 /*
 Product Name: Doctorly - Patient Management System
 Author: Themesbrand
@@ -52,6 +53,7 @@ File: Main Css File
 .logo-light {
     display: none;
 }
+
 
 /* Search */
 
@@ -1130,6 +1132,7 @@ body[data-layout=horizontal][data-layout-size=boxed] .navbar-header {
     max-width: 1300px;
 }
 
+
 /*!
  * Waves v0.7.6
  * http://fian.my.id/Waves
@@ -1881,6 +1884,7 @@ body[data-layout=horizontal][data-layout-size=boxed] .navbar-header {
     width: auto;
 }
 
+
 /* Rtl support */
 
 [data-simplebar-direction=rtl] .simplebar-track.simplebar-vertical {
@@ -1910,6 +1914,7 @@ body[data-layout=horizontal][data-layout-size=boxed] .navbar-header {
 .custom-scroll {
     height: 100%;
 }
+
 
 /* ==============
   Calendar
@@ -1954,6 +1959,7 @@ body[data-layout=horizontal][data-layout-size=boxed] .navbar-header {
 .tui-full-calendar-time-schedule {
     font-weight: 600;
 }
+
 
 /* ==============
   Druafula
@@ -2213,6 +2219,7 @@ body[data-layout=horizontal][data-layout-size=boxed] .navbar-header {
 .select2-container--default.select2-container--focus .select2-selection--multiple {
     border-color: #ced4da;
 }
+
 
 /* CSS Switch */
 
@@ -2508,6 +2515,7 @@ input[switch=dark]:checked+label {
 .note-toolbar {
     padding: 0 0 5px 5px !important;
 }
+
 
 /* Dropzone */
 
@@ -2867,6 +2875,7 @@ input[switch=dark]:checked+label {
     fill: #adb5bd;
 }
 
+
 /* Flot chart */
 
 .flot-charts-height {
@@ -3054,6 +3063,7 @@ input[switch=dark]:checked+label {
 .checkout-tabs .nav-pills .nav-link .check-nav-icon {
     font-size: 36px;
 }
+
 
 /* ==============
   Email
@@ -3302,6 +3312,7 @@ input[switch=dark]:checked+label {
     width: 25%;
 }
 
+
 /************** Horizontal timeline **************/
 
 .hori-timeline .events .event-list {
@@ -3338,6 +3349,7 @@ input[switch=dark]:checked+label {
         padding: 4px;
     }
 }
+
 
 /************** vertical timeline **************/
 
@@ -3392,7 +3404,7 @@ blockquote {
     margin: 0 0 20px;
     padding: 10px 20px;
     font-size: 17.5px;
-    border-left: 5px solid #6075ec !important;
+    border-left: 5px solid #6075ec!important;
     border: 1px solid rgba(120, 130, 140, .13);
 }
 

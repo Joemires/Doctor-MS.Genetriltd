@@ -133,10 +133,10 @@
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <!-- item-->
-                            <a class="dropdown-item" href="profile-edit"><i class="bx bx-user font-size-16 align-middle mr-1"></i> Change Profile</a>
-                            <a class="dropdown-item" href="payment-key"><i class="bx bx-key font-size-16 align-middle mr-1"></i> Payment Api Key</a>
+                            <a class="dropdown-item" href="{{ route('backend.profile') }}"><i class="bx bx-user font-size-16 align-middle mr-1"></i> Profile</a>
+                            {{-- <a class="dropdown-item" href="payment-key"><i class="bx bx-key font-size-16 align-middle mr-1"></i> Payment Api Key</a> --}}
                             <a class="dropdown-item d-block"
-                                href="change-password"><i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Change Password</a>
+                                href="change-password"><i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Security</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-danger" href="javascript:void();"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i>
@@ -208,7 +208,7 @@
                             {{-- Doctor Section` --}}
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="https://doctorly.themesbrand.website/appointment/create">
+                                    <a class="nav-link" href="{{ route('backend.appointments.index') }}">
                                         <i class="bx bx-calendar-plus mr-2"></i>Appointment
                                     </a>
                                 </li>
@@ -226,6 +226,7 @@
 
                                 <li class="nav-item dropdown">
                                     <a class="nav-link" href="https://doctorly.themesbrand.website/receptionist">
+                                    {{-- <a class="nav-link" href="#/receptionist"> --}}
                                         <i class="bx bx-user-circle mr-2"></i>Receptionist
                                     </a>
                                 </li>
@@ -235,8 +236,8 @@
                                         <i class="bx bx-notepad mr-2"></i>Prescription<div class="arrow-down"></div>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="topnav-layout">
-                                        <a href="https://doctorly.themesbrand.website/prescription" class="dropdown-item">List of Prescriptions</a>
-                                        <a href="https://doctorly.themesbrand.website/prescription/create" class="dropdown-item">Create Prescription</a>
+                                        <a href="#" class="dropdown-item">List of Prescriptions</a>
+                                        <a href="#" class="dropdown-item">Create Prescription</a>
                                     </div>
                                 </li>
 
@@ -276,11 +277,11 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-6">
-                            2022 © Doctorly
+                            2022 © Telemedicine
                         </div>
                         <div class="col-sm-6">
                             <div class="text-sm-right d-none d-sm-block">
-                                Design &amp; Develop by Themesbrand
+                                Design &amp; Develop by Joemires
                             </div>
                         </div>
                     </div>
